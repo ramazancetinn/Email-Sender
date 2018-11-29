@@ -6,6 +6,7 @@ from .models import send_mail
 # Create your views here.
 
 def mail_create(request):
+
     if request.method == 'POST':
         users_mail = registration.objects.values_list('mail_address', 'mail_address')
         users_mail_tuple = tuple(users_mail)
