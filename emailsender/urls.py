@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from registration.views import registration_create_view, registration_index_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('registration/', registration_create_view),
+    path('registration/index', registration_index_view,name='registration_index'),
 ]

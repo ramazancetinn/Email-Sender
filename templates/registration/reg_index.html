@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+
+    {% for x in users %}
+
+        {{x.id}}<br>
+        {{x.first_name}}<br>
+        {{x.last_name}}<br>
+        {{x.mail_address}}<br>
+            <br><br>
+    {% endfor %}
+
+</body>
+</html>
