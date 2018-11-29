@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block body %}
 
 <h1>This Registration page!!</h1>
 
@@ -13,7 +8,5 @@
 
 {{form.as_p}}
 <input type="submit" value="Send">
-</form>
 
-</body>
-</html>
+{% endblock %}
