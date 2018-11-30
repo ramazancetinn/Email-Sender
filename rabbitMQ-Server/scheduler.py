@@ -27,13 +27,16 @@ def start(db_host, db_name, db_user, db_password, queue_host, queue_name):
 
     while(True):
         cursor = db_connection.cursor()
-        query = ("SELECT *  FROM sendmail_send_mail WHERE status='NEW' limit 10")
+        query = ("SELECT subject,recipient_list,message  FROM sendmail_send_mail WHERE status='NEW' limit 10")
         cursor.execute(query)
         for (subject, recipient_list, message) in cursor:
             recipient = recipient_list
-            message_send = {'recipient': recipient, 'subject': subject, "body": message}
-            publish_message(queue_name, queue_channel, json.dumps(message_send))
+            message_send = {'recipient': recipient, 'subject': subject, 'body': message}
+            publish_message(queue_name, queue_channel, message_send)
 
+        query_update = (""" UPDATE sendmail_send_mail SET status = 'SENT!' WHERE status = 'NEW' """)
+        cursor.execute(query_update)
+        db_connection.commit()
 
         cursor.close()
         time.sleep(10)

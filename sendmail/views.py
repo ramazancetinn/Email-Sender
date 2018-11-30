@@ -19,7 +19,7 @@ def mail_create(request):
 
         dataT=send_mail()
         dataT.subject=subject_get
-        dataT.recipient_list=recipient_list_get
+        dataT.recipient_list=','.join(recipient_list_get)
         dataT.message=message_get
         dataT.status=status_get
 

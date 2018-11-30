@@ -23,11 +23,11 @@ def send_email(user, pwd, recipient, subject, body):
         print("failed to send mail", e)
 
 def callback_handler(ch, method, properties, message_send):
-    print("Message received: ", body)
+    print("Message received: ", message_send)
     email_body =json.loads(message_send)
     from_email = "dimag.kahta@gmail.com"
     from_password = "11232018"
-    print("Sending email to:", email_body['recipient'])
+    # print("Sending email to:", ','.join(email_body['recipient']))
     send_email(from_email, from_password, email_body['recipient'], email_body['subject'], email_body['body'])
 
 def create_channel(host, queue):
